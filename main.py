@@ -147,11 +147,12 @@ def main():
                     agente.setEstadoMeta((0,0,0,3,3))
                     print(agente.estadoMeta)
                     print("TECNICA DE BÚSQUEDA:")
-                    agente.setTecnica("profundidad")
+                    agente.setTecnica("amplitud")
                     print(agente.tecnica)
                     print()
                     print("EJECUTAR BUSQUEDA:",agente.tecnica)
                     lista=agente.programa()
+                    print('\n','\n',lista,'\n','\n')
                     for i in lista:
                         print("paso: ",i)
                     #ayuda 
@@ -166,11 +167,12 @@ def main():
                     agente.setEstadoMeta((0,0,0,3,3))
                     print(agente.estadoMeta)
                     print("TECNICA DE BÚSQUEDA:")
-                    agente.setTecnica("profundidad")
+                    agente.setTecnica("amplitud")
                     print(agente.tecnica)
                     print()
                     print("EJECUTAR BUSQUEDA:",agente.tecnica)
                     lista=agente.programa()
+                    print('\n','\n',lista,'\n','\n')
                     for i in lista:
                         print("paso: ",i)
                     #ayuda 

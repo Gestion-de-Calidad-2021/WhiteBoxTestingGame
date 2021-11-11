@@ -73,3 +73,21 @@ class TestAgente_Programa(unittest.TestCase):
     def test_programa_sin_tecnica(self):
         agente.setTecnica("xxx")
         self.assertEqual(agente.programa(),"Configure la tecnica de busqueda.")
+        
+class TestAgente_BFS(unittest.TestCase):
+    def test_programa_profundidad(self):
+        agente.setTecnica("profundidad")
+        self.assertEqual(agente.busqueda_profundidad([3,3,1,0,0],[0,0,0,3,3]),[(3, 3, 1, 0, 0),
+                                                                                   (2, 2, 0, 1, 1, 'Mover 1 Nativo (Mapuche) y 1 Verdugo a la derecha'),
+                                                                                   (3, 2, 1, 0, 1, 'Mover 1 Nativo (Mapuche) a la izquierda'),
+                                                                                   (3, 0, 0, 0, 3, 'Mover 2 Verdugos a la derecha'),
+                                                                                   (3, 1, 1, 0, 2, 'Mover 1 Verdugo a la izquierda'),
+                                                                                   (1, 1, 0, 2, 2, 'Mover 2 Nativos (Mapuches) a la derecha'),
+                                                                                   (2, 2, 1, 1, 1, 'Mover 1 Nativo (Mapuche) y 1 Verdugo a la izquierda'),
+                                                                                   (0, 2, 0, 3, 1, 'Mover 2 Nativos (Mapuches) a la derecha'),
+                                                                                   (0, 3, 1, 3, 0, 'Mover 1 Verdugo a la izquierda'),
+                                                                                   (0, 1, 0, 3, 2, 'Mover 2 Verdugos a la derecha'),
+                                                                                   (1, 1, 1, 2, 2, 'Mover 1 Nativo (Mapuche) a la izquierda'),
+                                                                                   (0, 0, 0, 3, 3, 'Mover 1 Nativo (Mapuche) y 1 Verdugo a la derecha'),
+                                                                                   (0, 0, 0, 3, 3)]) 
+   
