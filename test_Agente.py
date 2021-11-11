@@ -63,3 +63,13 @@ class TestAgente(unittest.TestCase):
         self.assertEqual(agente.generaHijos(nodo),
         [(2, 2, 0, 1, 1, 'Mover 1 Nativo (Mapuche) y 1 Verdugo a la derecha'), (3, 3, 1, 0, 0), (3, 1, 0, 0, 2, 'Mover 2 Verdugos a la derecha'), (3, 3, 1, 0, 0), (3, 2, 0, 0, 1, 'Mover 1 Verdugo a la derecha')])
         
+class TestAgente_Programa(unittest.TestCase):
+    def test_programa_profundidad(self):
+        agente.setTecnica("profundidad")
+        self.assertEqual(agente.programa(),agente.busqueda_profundidad(agente.estadoInicial,agente.estadoMeta))
+    def test_programa_amplitud(self):
+        agente.setTecnica("amplitud")
+        self.assertEqual(agente.programa(),agente.busqueda_amplitud(agente.estadoInicial,agente.estadoMeta))
+    def test_programa_sin_tecnica(self):
+        agente.setTecnica("xxx")
+        self.assertEqual(agente.programa(),"Configure la tecnica de busqueda.")
