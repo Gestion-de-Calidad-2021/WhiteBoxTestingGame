@@ -24,3 +24,6 @@ class TestBote(unittest.TestCase):
                               verdugo1Img, ventana).x, 1)
         self.assertEqual(Bote(123456987965465432132138464831381384313546384344648646, 478, 2, pacifico1Img,
                               verdugo1Img, ventana).x, 123456987965465432132138464831381384313546384344648646)
+
+#if __name__ == '__main__':
+#    unittest.main()
