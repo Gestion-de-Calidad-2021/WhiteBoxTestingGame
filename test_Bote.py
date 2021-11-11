@@ -12,7 +12,7 @@ ventana = pygame.display.set_mode((ancho, altura))
 pacifico1Img = pygame.image.load('imagenes/pacifico1.png')
 verdugo1Img = pygame.image.load('imagenes/verdugo1.png')
 
-
+bote=Bote(157, 478, 2, pacifico1Img,verdugo1Img, ventana)
 class TestBoteCtr(unittest.TestCase):
 
     def test_BoteEnX_with_three_positives(self):
@@ -42,7 +42,6 @@ class TestBoteCtr(unittest.TestCase):
                             verdugo1Img, ventana).imagen2, verdugo1Img)
     
     
-# class TestBoteMover(unittest.TestCase):
-#     bote = Bote(157, 478, 2, pacifico1Img,verdugo1Img, ventana)
-#     def test_mover(self):
-#         self.assertEqual()
+class TestBoteMover(unittest.TestCase):
+    def test_mover(self):
+        self.assertEqual(Bote(157, 478, 2, pacifico1Img,verdugo1Img, ventana).mover(10,10,'M'),bote.mover(10,10,'M'))
