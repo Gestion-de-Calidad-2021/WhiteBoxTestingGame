@@ -51,3 +51,8 @@ class TestBoteMover(unittest.TestCase):
         self.assertEqual(Bote(157, 478, 4, pacifico1Img,verdugo1Img, ventana).mover(10,10,'M'),bote.mover(10,10,'M'))
     def test_mover_4_if(self):
         self.assertEqual(Bote(157, 478, 5, pacifico1Img,verdugo1Img, ventana).mover(10,10,'C'),bote.mover(10,10,'C'))
+    def test_mover_5_if(self):
+        self.assertEqual(Bote(157, 478, 2, pacifico1Img,verdugo1Img, ventana).mover(10,10,'H'),bote.mover(10,10,'H'))
+    bote.pos=10
+    def test_mover_6_if(self):
+        self.assertEqual(Bote(157, 478, 10, pacifico1Img,verdugo1Img, ventana).mover(10,10,'C'),bote.mover(10,10,'C'))
