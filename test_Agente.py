@@ -1,77 +1,6 @@
 import unittest
 from Agente import Agente
-import pytest
 
-from copy import deepcopy
-from time import time
-import sys
-"""
-setTecnica
-setEstadoInicial
-setEstadoMeta
-testObjetivo
-generaHijos
-busqueda_profundidad
- """
-
-
-""" agente = Agente()
-pafi, verdug, bt = 3, 3, 1  # Indica 3 verdugos, 3 pacificos en orilla izquierda """
-# indica estado en orilla izquierda (numero de pacificos y verdugos)
-""" estado = [pafi, verdug, bt] """
-
-# agente.setEstadoMeta((0, 0, 0, 3, 3))
-# print(agente.estadoMeta[0][0]) Bug NO SE PUEDE ITERAR UN OBJETO 'int'
-
-""" agente.setEstadoInicial(
-    (estado[0], estado[1], estado[2], 3-estado[0], 3-estado[1])) """
-""" inicial = agente.estadoInicial
-frontera = [[inicial]]
-print(frontera)
-print(type(frontera))
-tam = 0
-tam = max(sys.getsizeof(frontera), tam)
-print('tamanio memoria:', tam)
-
-camino = frontera.pop()
-print(camino)
-print(type(camino))
-
-nodo = camino[-1]
-print(nodo) """
-
-""" print(agente.testObjetivo(nodo)) """  # no se puede porque tiene un Error de Index (se sale del sango de la lista [0][0])
-
-""" agente.generaHijos(nodo) """
-
-""" print(agente.generaHijos(nodo)) """
-""" print(agente.estadoInicial)
-agente.setEstadoMeta((0, 0, 0, 3, 3))
-print(agente.estadoMeta)
-print("TECNICA DE BÚSQUEDA:")
-agente.setTecnica("profundidad")
-print(agente.tecnica) """
-
-""" camino = agente.busqueda_profundidad(agente.estadoInicial, agente.estadoMeta)
-print(camino) """
-
-agente = Agente()
-pafi, verdug, bt = 3, 3, 1  # Indica 3 verdugos, 3 pacificos en orilla izquierda
-estado = [pafi, verdug, bt] # indica estado en orilla izquierda (numero de pacificos y verdugos)
-agente.setEstadoInicial(False)
-print(agente.estadoInicial)
-agente.setEstadoMeta((0, 0, 0, 3, 3))
-print(agente.estadoMeta)
-print("TECNICA DE BÚSQUEDA:")
-agente.setTecnica("profundidad")
-print(agente.tecnica)
-frontera=[[agente.estadoInicial]]
-print(frontera)
-print(bool(frontera))
-""" camino = agente.busqueda_profundidad(
-            agente.estadoInicial, agente.estadoMeta)
-print("CAMINO:")
-print(camino) """
 
 agenteTest=Agente()
 print('=======================')
@@ -81,6 +10,10 @@ print(agenteTest.moverMV(agenteTest.estadoInicial))
 
 class TestAgente(unittest.TestCase):
     def test_costructor(self):
+        agente = Agente()
+        pafi, verdug, bt = 3, 3, 1  # Indica 3 verdugos, 3 pacificos en orilla izquierda
+        estado = [pafi, verdug, bt] # indica estado en orilla izquierda (numero de pacificos y verdugos)
+ 
         agenteTest=Agente()
         agenteTest.setEstadoInicial((estado[0], estado[1], estado[2], 3-estado[0], 3-estado[1]))
         self.assertEqual(agenteTest.estadoInicial, (3, 3, 1, 0, 0))
@@ -150,8 +83,7 @@ class TestAgente(unittest.TestCase):
     def test_test_Objetivo(self):
         agente = Agente()
         pafi, verdug, bt = 3, 3, 1  # Indica 3 verdugos, 3 pacificos en orilla izquierda
-        # indica estado en orilla izquierda (numero de pacificos y verdugos)
-        estado = [pafi, verdug, bt]
+        estado = [pafi, verdug, bt] # indica estado en orilla izquierda (numero de pacificos y verdugos)
         agente.setEstadoInicial(
         (estado[0], estado[1], estado[2], 3-estado[0], 3-estado[1]))
         inicial = agente.estadoInicial
@@ -185,19 +117,12 @@ class TestAgente(unittest.TestCase):
 
     def test_DFS_Nodo_Inicial_Vacio(self):
         agente = Agente()
-        """ pafi, verdug, bt = 3, 3, 1  # Indica 3 verdugos, 3 pacificos en orilla izquierda
-        estado = [pafi, verdug, bt] # indica estado en orilla izquierda (numero de pacificos y verdugos)
-        agente.setEstadoInicial((3-estado[0], 3-estado[1], 1-estado[2], estado[0], estado[1])) """
         agente.setEstadoInicial(None)
         agente.setEstadoMeta((0, 0, 0, 3, 3))
         agente.setTecnica("profundidad")
         camino = agente.busqueda_profundidad(
             agente.estadoInicial, agente.estadoMeta)
         self.assertEqual(camino,None)
-        """ with self.assertRaises(TypeError) as ctx:
-            agente.busqueda_profundidad
-        excepcion= ctx.exception
-        self.assertEqual(excepcion,"TypeError: 'NoneType' object is not subscriptable") """
 
     def test_DFS_Nodo_Objetivo_Igual_A_Estado_Inicial(self):
         agente = Agente()
@@ -228,18 +153,40 @@ class TestAgente(unittest.TestCase):
 
         
 class TestAgente_Programa(unittest.TestCase):
-    def test_programa_profundidad(self):
+
+    
+    def test_programa_profundidad(self):    
+        agente = Agente()
+        pafi, verdug, bt = 3, 3, 1  # Indica 3 verdugos, 3 pacificos en orilla izquierda
+        estado = [pafi, verdug, bt] # indica estado en orilla izquierda (numero de pacificos y verdugos)
+        agente.setEstadoInicial((3-estado[0], 3-estado[1], 1-estado[2], estado[0], estado[1]))
+        agente.setEstadoMeta((0, 0, 0, 3, 3))    
         agente.setTecnica("profundidad")
         self.assertEqual(agente.programa(),agente.busqueda_profundidad(agente.estadoInicial,agente.estadoMeta))
     def test_programa_amplitud(self):
+        agente = Agente()
+        pafi, verdug, bt = 3, 3, 1  # Indica 3 verdugos, 3 pacificos en orilla izquierda
+        estado = [pafi, verdug, bt] # indica estado en orilla izquierda (numero de pacificos y verdugos)
+        agente.setEstadoInicial((3-estado[0], 3-estado[1], 1-estado[2], estado[0], estado[1]))
+        agente.setEstadoMeta((0, 0, 0, 3, 3))  
         agente.setTecnica("amplitud")
         self.assertEqual(agente.programa(),agente.busqueda_amplitud(agente.estadoInicial,agente.estadoMeta))
     def test_programa_sin_tecnica(self):
+        agente = Agente()
+        pafi, verdug, bt = 3, 3, 1  # Indica 3 verdugos, 3 pacificos en orilla izquierda
+        estado = [pafi, verdug, bt] # indica estado en orilla izquierda (numero de pacificos y verdugos)
+        agente.setEstadoInicial((3-estado[0], 3-estado[1], 1-estado[2], estado[0], estado[1]))
+        agente.setEstadoMeta((0, 0, 0, 3, 3))  
         agente.setTecnica("xxx")
         self.assertEqual(agente.programa(),"Configure la tecnica de busqueda.")
         
 class TestAgente_BFS(unittest.TestCase):
     def test_programa_profundidad(self):
+        agente = Agente()
+        pafi, verdug, bt = 3, 3, 1  # Indica 3 verdugos, 3 pacificos en orilla izquierda
+        estado = [pafi, verdug, bt] # indica estado en orilla izquierda (numero de pacificos y verdugos)
+        agente.setEstadoInicial((3-estado[0], 3-estado[1], 1-estado[2], estado[0], estado[1]))
+        agente.setEstadoMeta((0, 0, 0, 3, 3))  
         agente.setTecnica("amplitud")
         agente.estadoInicial=(3, 3, 1, 0, 0)
         agente.setEstadoMeta((0,0,0,3,3))
@@ -257,6 +204,11 @@ class TestAgente_BFS(unittest.TestCase):
                                                                                    (0, 0, 0, 3, 3, 'Mover 1 Nativo (Mapuche) y 1 Verdugo a la derecha'),
                                                                                    (0, 0, 0, 3, 3)]) 
     def test_programa_profundidad(self):
+        agente = Agente()
+        pafi, verdug, bt = 3, 3, 1  # Indica 3 verdugos, 3 pacificos en orilla izquierda
+        estado = [pafi, verdug, bt] # indica estado en orilla izquierda (numero de pacificos y verdugos)
+        agente.setEstadoInicial((3-estado[0], 3-estado[1], 1-estado[2], estado[0], estado[1]))
+        agente.setEstadoMeta((0, 0, 0, 3, 3))  
         agente.setTecnica("amplitud")
         agente.estadoInicial=(0, 0, 0, 3, 3)
         agente.setEstadoMeta((0,0,0,3,3))
