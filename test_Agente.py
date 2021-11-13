@@ -92,4 +92,9 @@ class TestAgente_BFS(unittest.TestCase):
                                                                                    (1, 1, 1, 2, 2, 'Mover 1 Nativo (Mapuche) a la izquierda'),
                                                                                    (0, 0, 0, 3, 3, 'Mover 1 Nativo (Mapuche) y 1 Verdugo a la derecha'),
                                                                                    (0, 0, 0, 3, 3)]) 
+    def test_programa_profundidad(self):
+        agente.setTecnica("amplitud")
+        agente.estadoInicial=(0, 0, 0, 3, 3)
+        agente.setEstadoMeta((0,0,0,3,3))
+        self.assertEqual(agente.busqueda_amplitud(agente.estadoInicial,agente.estadoMeta),[(0, 0, 0, 3, 3)])
    
