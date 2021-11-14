@@ -43,5 +43,18 @@ class TestBoteCtr(unittest.TestCase):
     
     
 class TestBoteMover(unittest.TestCase):
-    def test_mover(self):
+    def test_mover_1_if(self):
         self.assertEqual(Bote(157, 478, 2, pacifico1Img,verdugo1Img, ventana).mover(10,10,'M'),bote.mover(10,10,'M'))
+    def test_mover_2_if(self):
+        self.assertEqual(Bote(157, 478, 3, pacifico1Img,verdugo1Img, ventana).mover(10,10,'C'),bote.mover(10,10,'C'))
+    def test_mover_3_if(self):
+        self.assertEqual(Bote(157, 478, 4, pacifico1Img,verdugo1Img, ventana).mover(10,10,'M'),bote.mover(10,10,'M'))
+    def test_mover_4_if(self):
+        self.assertEqual(Bote(157, 478, 5, pacifico1Img,verdugo1Img, ventana).mover(10,10,'C'),bote.mover(10,10,'C'))
+    def test_mover_5_if(self):
+        self.assertEqual(Bote(157, 478, 2, pacifico1Img,verdugo1Img, ventana).mover(10,10,'H'),bote.mover(10,10,'H'))
+    def test_mover_6_if(self):
+        self.assertEqual(Bote(157, 478, 4, pacifico1Img,verdugo1Img, ventana).mover(10,10,'H'),bote.mover(10,10,'H'))
+    bote.pos=10
+    def test_mover_7_if(self):
+        self.assertEqual(Bote(157, 478, 10, pacifico1Img,verdugo1Img, ventana).mover(10,10,'C'),bote.mover(10,10,'C'))

@@ -157,14 +157,11 @@ class Agente:
     def programa(self):
         if(self.tecnica=="profundidad"):
             print("estado inicial:",self.estadoInicial, "estado meta:",self.estadoMeta)
-            return self.busqueda_profundidad(self.estadoInicial, self.estadoMeta)
-           
-            
+            return self.busqueda_profundidad(self.estadoInicial, self.estadoMeta)           
 
         elif(self.tecnica=="amplitud"):
             print("estado inicial:",self.estadoInicial, "estado meta:",self.estadoMeta)
-            return self.busqueda_amplitud(self.estadoInicial, self.estadoMeta)
-            
+            return self.busqueda_amplitud(self.estadoInicial, self.estadoMeta)            
         else:
             return "Configure la tecnica de busqueda."
     
