@@ -89,6 +89,15 @@ class TestAgente(unittest.TestCase):
         self.assertEqual(agenteTest.moverV((2,2,1,1,1)), (2, 2, 1, 1, 1))
         self.assertEqual(agenteTest.moverV((2,2,0,1,1)), (2, 2, 0, 1, 1))
 
+    def test_esValido(self):
+        agenteTest=Agente()
+        self.assertEqual(agenteTest.esValido((4,4,1,-1,-1)), False)
+        self.assertEqual(agenteTest.esValido((3,3,1,0,0)), True)
+        self.assertEqual(agenteTest.esValido((2,1,1,1,2)), False)
+        self.assertEqual(agenteTest.esValido((3,0,1,0,3)), True)
+        self.assertEqual(agenteTest.esValido((1,2,1,2,1)), False)
+        self.assertEqual(agenteTest.esValido((0,3,1,3,0)), True)
+
     def test_set_tecnica(self):
         agente.setTecnica("profundidad")
         self.assertEqual(agente.tecnica, "profundidad")
