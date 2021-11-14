@@ -1,16 +1,9 @@
 import unittest
 from Agente import Agente
 
-
-agenteTest=Agente()
-print('=======================')
-agenteTest.setEstadoInicial((3,1,0,0,2))
-print(agenteTest.estadoInicial)
-print(agenteTest.moverMV(agenteTest.estadoInicial))
-
 class TestAgente(unittest.TestCase):
     def test_costructor(self):
-        agente = Agente()
+    
         pafi, verdug, bt = 3, 3, 1  # Indica 3 verdugos, 3 pacificos en orilla izquierda
         estado = [pafi, verdug, bt] # indica estado en orilla izquierda (numero de pacificos y verdugos)
  
@@ -120,9 +113,8 @@ class TestAgente(unittest.TestCase):
         agente.setEstadoInicial(None)
         agente.setEstadoMeta((0, 0, 0, 3, 3))
         agente.setTecnica("profundidad")
-        camino = agente.busqueda_profundidad(
-            agente.estadoInicial, agente.estadoMeta)
-        self.assertEqual(camino,None)
+        self.assertEqual(agente.busqueda_profundidad(
+            agente.estadoInicial, agente.estadoMeta),None)
 
     def test_DFS_Nodo_Objetivo_Igual_A_Estado_Inicial(self):
         agente = Agente()
@@ -181,7 +173,8 @@ class TestAgente_Programa(unittest.TestCase):
         self.assertEqual(agente.programa(),"Configure la tecnica de busqueda.")
         
 class TestAgente_BFS(unittest.TestCase):
-    def test_programa_profundidad(self):
+    
+    def test_programa_profundidad2(self):
         agente = Agente()
         pafi, verdug, bt = 3, 3, 1  # Indica 3 verdugos, 3 pacificos en orilla izquierda
         estado = [pafi, verdug, bt] # indica estado en orilla izquierda (numero de pacificos y verdugos)
@@ -203,6 +196,7 @@ class TestAgente_BFS(unittest.TestCase):
                                                                                    (1, 1, 1, 2, 2, 'Mover 1 Nativo (Mapuche) a la izquierda'),
                                                                                    (0, 0, 0, 3, 3, 'Mover 1 Nativo (Mapuche) y 1 Verdugo a la derecha'),
                                                                                    (0, 0, 0, 3, 3)]) 
+        
     def test_programa_profundidad(self):
         agente = Agente()
         pafi, verdug, bt = 3, 3, 1  # Indica 3 verdugos, 3 pacificos en orilla izquierda
