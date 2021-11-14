@@ -25,3 +25,4 @@ class Personaje:
 
     def mover(self):
         self.superficie.blit(self.imagen2, (self.x, self.y))
+
