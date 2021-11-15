@@ -15,6 +15,7 @@ In the way to test the code and increase the coverage we start getting the initi
 
 After doing the unit tests to the most part of the code we have the next results:
 
+![finalCoverage](https://github.com/Gestion-de-Calidad-2021/WhiteBoxTestingGame/blob/master/readmeImages/final_coverage.png)
 
 We test all the classes but the main.py because we just want to test all the funtionallity and dont want to test the unification because it have visual functionallitys that dont are the goal of this practice they are more visual task taht can be testing with black box tests, all the classes has his test in the files that has the same name but with a "test_" ahead.
 
